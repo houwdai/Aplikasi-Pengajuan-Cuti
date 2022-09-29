@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Aplikasi_Pengajuan_Cuti.Models.Cuti>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pegawai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pegawai.Division)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.alasan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pegawai.id)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.Pegawai.Division)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.alasan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.id)
+            </td>
+            <td>
+
+            </td>
+            @if(item.Status.id == 1){
+                    <td>
+                        <input class="btn btn-primary" type="button" value="Tolak">
+                        <a asp-action="Tolak" asp-route-id="@item.id">Tolak</a> |
+                        <a asp-action="Terima" asp-route-id="@item.id">Terima</a> |
+                    </td>
+            }
+            @if(item.Status.id == 2){
+                    <td>
+                        <input class="btn btn-primary" type="button" value="Tolak">
+                        <a asp-action="Tolak" asp-route-id="@item.id">Tolak</a> |
+                        <a asp-action="Terima" asp-route-id="@item.id">Terima</a> |
+                    </td>
+            }
+                @if (item.Status.id == 3)
+                {
+                    <td>
+                        <input class="btn btn-primary" type="button" value="Tolak">
+                        <a asp-action="Tolak" asp-route-id="@item.id">Tolak</a> |
+                        <a asp-action="Terima" asp-route-id="@item.id">Terima</a> |
+                    </td>
+                }
+           
+        </tr>
+}
+    </tbody>
+</table>

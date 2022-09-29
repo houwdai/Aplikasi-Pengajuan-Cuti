@@ -1,0 +1,19 @@
+﻿@model Aplikasi_Pengajuan_Cuti.Models.Pegawai
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="card" style="width: 18rem;">
+    <img class="align-items-center" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gnome-stock_person.svg/1024px-Gnome-stock_person.svg.png" width="120px" />
+  <div class="card-body">
+      <h5> @Html.DisplayFor(model => model.nama_pegawai) </h5>
+       <h5> Divisi :  @Html.DisplayFor(model => model.Division.nama_division) </h5>
+  </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

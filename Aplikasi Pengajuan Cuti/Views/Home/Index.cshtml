@@ -1,0 +1,39 @@
+﻿@model Aplikasi_Pengajuan_Cuti.Models.Userr
+
+@{
+    ViewData["Title"] = "Home Page | Login";
+}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="text-justify">
+                <h1 class="display-4">Welcome</h1>
+                <p>
+                    Selamat datang di Portal Pengajuan Cuti.<br /> Silahkan masukkan Username dan Password anda
+                </p>
+            </div>
+            <div class="align-items-center">
+                <form style="width: 18rem;" asp-action="Login">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input asp-for="username" type="text" class="form-control" id="username" aria-describedby="emailHelp">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input asp-for="password" type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" action="Cekdata">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="col">
+            <img src="https://images.pexels.com/photos/3316924/pexels-photo-3316924.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+        </div>
+    </div>
+
+
+

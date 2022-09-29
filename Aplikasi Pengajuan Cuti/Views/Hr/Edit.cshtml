@@ -1,0 +1,37 @@
+﻿@model Aplikasi_Pengajuan_Cuti.ViewModels.ViewModel
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h3>Edit Pegawai</h3>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="@Model.pegawai.id" />
+                <div class="form-group">
+                    <label asp-for="@Model.pegawai.nama_pegawai" class="control-label"></label>
+                    <input asp-for="@Model.pegawai.nama_pegawai" class="form-control" value="@ViewData["namaPegawai"]" />
+                    <span asp-validation-for="@Model.pegawai.nama_pegawai" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="@Model.pegawai.id_division" class="control-label"></label>
+                    <select asp-for="@Model.pegawai.id_division" class="form-control" asp-items="@Model.Division"></select>
+                </div>
+              
+                <div class="form-group">
+                    <input type="submit" value="save" class="btn btn-primary" action="Edit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div>
+    @*<a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |*@
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Aplikasi_Pengajuan_Cuti.Models.Pegawai>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h3>
+    Daftar Nama Pegawai
+</h3>
+<a asp-action="Create">Tambah Pegawai</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Nama Pegawai
+            </th>
+            <th>
+                Divisi Pegawai
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nama_pegawai)
+
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Division.nama_division)
+                </td>
+               
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a  asp-controller="Cutis" asp-action="Index">Ke Halaman Pengajuan Cuti</a>
