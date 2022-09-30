@@ -12,14 +12,15 @@ using Aplikasi_Pengajuan_Cuti.ViewModels;
 
 namespace Aplikasi_Pengajuan_Cuti.Controllers
 {
+    [Authorize (Role = "Adminhr")]
     public class HrController : Controller
     {
         myContext myContext;
-
         public HrController(myContext myContext)
         {
             this.myContext = myContext;
         }
+
         public IActionResult Index()
         {
             var data = myContext.pegawai.Include(x=>x.Division).ToList();

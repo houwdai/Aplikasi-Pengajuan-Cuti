@@ -20,7 +20,8 @@ namespace Aplikasi_Pengajuan_Cuti.Controllers
         // GET: CutisController
         public ActionResult Index()
         {
-            var data = myContext.cuti.Include(x => x.Pegawai).Include(y=> y.Status).ToList();
+            var data = myContext.cuti.Include(x => x.Pegawai).Include(y=> y.Status).
+                Include(z => z.Pegawai.Division).ToList();
             return View(data);
         }
 

@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<Aplikasi_Pengajuan_Cuti.Models.Cuti>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Riwayat";
 }
 
-<h1>Pengajuan Cuti Yang Butuh Tindakan</h1>
+<h1>Tabel Riwayat Pengajuan Cuti</h1>
 
-<p>
-    <a asp-action="Riwayat">Lihat Riwayat Pengajuan Cuti</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +15,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Pegawai.Division)
-
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.alasan)
@@ -33,7 +30,7 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Pegawai.nama_pegawai)
-            </td>            
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Pegawai.Division.nama_division)
             </td>
@@ -43,13 +40,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Status.status_cuti)
             </td>
-                <td>
-                    <a class="btn btn-primary" type="button"  asp-action="Terima" asp-route-id="@item.id">Terima</a>
-                    <a class="btn btn-primary" type="button"  asp-action="Tolak" asp-route-id="@item.id">Tolak</a>
-                    
-                </td>
-           
-           
+        
         </tr>
 }
     </tbody>

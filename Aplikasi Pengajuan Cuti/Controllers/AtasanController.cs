@@ -1,10 +1,13 @@
 ﻿using Aplikasi_Pengajuan_Cuti.Context;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Aplikasi_Pengajuan_Cuti.Controllers
 {
+    [Authorize (Role = "Atasan")]
     public class AtasanController : Controller
     {
         myContext myContext;
@@ -16,26 +19,43 @@ namespace Aplikasi_Pengajuan_Cuti.Controllers
         // GET: AtasanController
         public ActionResult Index()
         {
-            var data = myContext.cuti.ToList();
+            int status_awaiting = 1;
+            var data = myContext.cuti.Where(x=> x.id_status == status_awaiting).Include(x => x.Pegawai).Include(y => y.Status).
+                Include(z => z.Pegawai.Division).ToList();
             return View(data);
         }
 
-        public ActionResult Tolak(int id)
-        {
+        [HttpGet("Terima/{id:int}")]
 
-            return View();
-        }        
         public ActionResult Terima(int id)
         {
 
-            return View();
+            var cuti = myContext.cuti.Where(a => a.id == id).FirstOrDefault();
+            cuti.id_status = 2;
+            myContext.cuti.Update(cuti);
+            myContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("Tolak/{id:int}")]
+        public ActionResult Tolak(int id)
+        {
+
+            var cuti = myContext.cuti.Where(a => a.id == id).FirstOrDefault();
+            cuti.id_status = 3;
+            myContext.cuti.Update(cuti);
+            myContext.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 
         // GET: AtasanController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Riwayat(int id)
         {
-            return View();
+            int status_awaiting = 1;
+            var data = myContext.cuti.Where(x => x.id_status != status_awaiting).Include(x => x.Pegawai).Include(y => y.Status).
+               Include(z => z.Pegawai.Division).ToList();
+            return View(data);
         }
 
         // GET: AtasanController/Create

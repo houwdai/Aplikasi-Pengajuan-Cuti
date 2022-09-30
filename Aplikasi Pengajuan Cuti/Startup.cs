@@ -56,7 +56,7 @@ namespace Aplikasi_Pengajuan_Cuti
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Hr}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
